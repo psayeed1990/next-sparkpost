@@ -11,7 +11,7 @@ const Home = () => {
     //onSubmit method
     const submitEmailSendForm = async (data) => {
         try {
-            const result = await fetch("http://localhost:5000/sendmail", {
+            const result = await fetch("http://hyfotdlgzb.us08.fldrv.com/", {
                 method: "POST",
                 headers: {
                     Accept: "application/json",
