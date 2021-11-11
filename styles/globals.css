@@ -1,0 +1,44 @@
+html,
+body {
+    background: bisque;
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/**
+ *
+ * form
+ *
+ */
+
+input,
+textarea {
+    display: block;
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #eee;
+    box-shadow: 0 0 3px #888;
+    font-size: 18px;
+    color: darkcyan;
+}
+
+input[type="submit"] {
+    text-transform: uppercase;
+    background: #389128;
+    color: white;
+    cursor: pointer;
+}
+h1 {
+    text-transform: uppercase;
+}
