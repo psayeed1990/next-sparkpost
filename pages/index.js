@@ -11,14 +11,17 @@ const Home = () => {
     //onSubmit method
     const submitEmailSendForm = async (data) => {
         try {
-            const result = await fetch("http://hyfotdlgzb.us08.fldrv.com/", {
-                method: "POST",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-            });
+            const result = await fetch(
+                "http://hyfotdlgzb.us08.fldrv.com/sendmail",
+                {
+                    method: "POST",
+                    headers: {
+                        Accept: "application/json",
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(data),
+                }
+            );
             const sendEmail = await result.json();
             if (sendEmail.success) {
                 successSet(sendEmail.success);
