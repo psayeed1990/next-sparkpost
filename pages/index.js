@@ -1,8 +1,10 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
 
 const Home = () => {
+    const [success, successSet] = useState(null);
     //destruct useForm
     const { register, handleSubmit } = useForm();
 
@@ -19,7 +21,7 @@ const Home = () => {
             });
             const sendEmail = await result.json();
             if (sendEmail.success) {
-                console.log(sendEmail.success);
+                successSet(sendEmail.success);
             }
         } catch (err) {
             console.log(err);
@@ -40,17 +42,39 @@ const Home = () => {
                 //this is main form field to send email
             }
             <main className={styles.main}>
-                <h1 className={styles.title}>Send An Email </h1>
-                <form onSubmit={handleSubmit(submitEmailSendForm)}>
-                    <input placeholder="Name" {...register("name")} />
-                    <input placeholder="Email" {...register("email")} />
-                    <input placeholder="Subject" {...register("subject")} />
-                    <textarea
-                        {...register("message")}
-                        defaultValue="Message body"
-                    ></textarea>
-                    <input type="submit" value="send me a email now" />
-                </form>
+                {success ? (
+                    <h1 className={styles.title}>{success}</h1>
+                ) : (
+                    <form onSubmit={handleSubmit(submitEmailSendForm)}>
+                        <h1 className={styles.title}>Send An Email </h1>
+
+                        <input
+                            placeholder="Name"
+                            {...register("name", {
+                                required: true,
+                            })}
+                        />
+                        <input
+                            placeholder="Email"
+                            {...register("email", {
+                                required: true,
+                            })}
+                        />
+                        <input
+                            placeholder="Subject"
+                            {...register("subject", {
+                                required: true,
+                            })}
+                        />
+                        <textarea
+                            {...register("message", {
+                                required: true,
+                            })}
+                            defaultValue="Message body"
+                        ></textarea>
+                        <input type="submit" value="send me a email now" />
+                    </form>
+                )}
             </main>
         </div>
     );
